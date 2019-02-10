@@ -1,9 +1,11 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
     <actions/>
-    <description>Build pull requests for Go repository on Github
-- Set the GithubProject url
-- Source Code Management repository url
+    <description>Build on pull request
+- Set General -> GitHub project -> Project url (repository url)
+- Set Source Code Management -> Repository URL
+- If private repository, set Source Code Management -> Credentials
+- Set Build Triggers -> Admin list
 </description>
     <keepDependencies>false</keepDependencies>
     <properties>
@@ -41,7 +43,7 @@
         <org.jenkinsci.plugins.ghprb.GhprbTrigger plugin="ghprb@1.42.0">
             <spec>H/5 * * * *</spec>
             <configVersion>3</configVersion>
-            <adminlist>username</adminlist>
+            <adminlist></adminlist>
             <allowMembersOfWhitelistedOrgsAsAdmin>false</allowMembersOfWhitelistedOrgsAsAdmin>
             <orgslist></orgslist>
             <cron>H/5 * * * *</cron>
