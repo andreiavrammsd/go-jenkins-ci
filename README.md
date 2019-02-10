@@ -18,7 +18,7 @@ It includes job templates for:
 * Docker compose
 * Github [personal access token](https://github.com/settings/tokens) with scopes:
   * repo
-  * admin:repo_hook
+  * write:repo_hook
 
 ## Install
 
