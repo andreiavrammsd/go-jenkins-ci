@@ -11,7 +11,7 @@ def githuAccessToken = new File("/run/secrets/github-access-token").text.trim()
 Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(
     CredentialsScope.GLOBAL,
     "github-user-access-token",
-    "Github access by username and access token",
+    "GitHub access by username and access token",
     githubUser,
     githuAccessToken
 )
@@ -22,7 +22,7 @@ SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(
 Credentials secretText = (Credentials) new StringCredentialsImpl(
     CredentialsScope.GLOBAL,
     "github-secret",
-    "Github access by secret",
+    "GitHub access by secret",
     Secret.fromString(githuAccessToken)
 )
 

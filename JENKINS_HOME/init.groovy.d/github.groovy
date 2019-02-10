@@ -4,7 +4,7 @@ import org.jenkinsci.plugins.github.config.GitHubServerConfig
 def github = jenkins.model.Jenkins.instance.getExtensionList(GitHubPluginConfig.class)[0]
 
 def c = new GitHubServerConfig("github-secret")
-c.setName("Github server")
+c.setName("GitHub server")
 c.setManageHooks(true)
 
 github.setConfigs([

@@ -20,7 +20,7 @@ if (!exists) {
     def String serverAPIUrl = 'https://api.github.com'
     def String jenkinsUrl = null
     def String credentialsId = 'github-user-access-token'
-    def String description = 'Github main connection'
+    def String description = 'GitHub main connection'
     def String secret = null
     githubAuths.add(new GhprbGitHubAuth(serverAPIUrl, jenkinsUrl, credentialsId, description, id, secret))
 
