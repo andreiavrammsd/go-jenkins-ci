@@ -8,10 +8,10 @@ Automated setup of continuous integration for Go projects hosted on GitHub with 
 - Automatically sets up webhooks on GitHub
 - Can also be configured for non Go projects
 
-It includes job templates for:
-- Pull request
-- Branch push
-- Various plugins for simple or advanced jobs management
+Includes:
+- Pull request job template
+- Branch push job template
+- Various [plugins](JENKINS_HOME/plugins.txt) for simple or advanced jobs management
 
 ## Requirements
 * make
