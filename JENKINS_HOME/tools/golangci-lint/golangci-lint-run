@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+golangci-lint-install
+
+if [[ ! -f ".golangci.yml" ]]; then
+    cp ${GOLANGCI_LINT_PATH}/.golangci.yml .
+fi
+
+go get
+golangci-lint run

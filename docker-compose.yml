@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  jenkins:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    ports:
+      - "9696:8080"
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+      - github-user
+      - github-access-token
+    environment:
+      - JENKINS_URL
+      - GO_VERSION
+      - GOLANGCI_LINT_VERSION
+
+volumes:
+  jenkins_home:
+
+secrets:
+  jenkins-user:
+    file: /tmp/jenkins-secrets-jenkins-user
+  jenkins-pass:
+    file: /tmp/jenkins-secrets-jenkins-pass
+  github-user:
+    file: /tmp/jenkins-secrets-github-user
+  github-access-token:
+    file: /tmp/jenkins-secrets-github-access-token

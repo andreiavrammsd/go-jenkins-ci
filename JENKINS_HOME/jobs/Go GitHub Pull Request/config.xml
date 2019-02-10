@@ -1,0 +1,119 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+    <actions/>
+    <description>Build pull requests for Go repository on Github
+- Set the GithubProject url
+- Source Code Management repository url
+</description>
+    <keepDependencies>false</keepDependencies>
+    <properties>
+        <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.3">
+            <projectUrl>https://github.com/username/project</projectUrl>
+            <displayName></displayName>
+        </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    </properties>
+    <scm class="hudson.plugins.git.GitSCM" plugin="git@3.9.1">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+            <hudson.plugins.git.UserRemoteConfig>
+                <name>origin</name>
+                <refspec>+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*</refspec>
+                <url>https://github.com/username/project</url>
+                <credentialsId>github-user-access-token</credentialsId>
+            </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+            <hudson.plugins.git.BranchSpec>
+                <name>${ghprbActualCommit}</name>
+            </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+            <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+        </extensions>
+    </scm>
+    <canRoam>true</canRoam>
+    <disabled>true</disabled>
+    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+    <triggers>
+        <org.jenkinsci.plugins.ghprb.GhprbTrigger plugin="ghprb@1.42.0">
+            <spec>H/5 * * * *</spec>
+            <configVersion>3</configVersion>
+            <adminlist>username</adminlist>
+            <allowMembersOfWhitelistedOrgsAsAdmin>false</allowMembersOfWhitelistedOrgsAsAdmin>
+            <orgslist></orgslist>
+            <cron>H/5 * * * *</cron>
+            <buildDescTemplate></buildDescTemplate>
+            <onlyTriggerPhrase>false</onlyTriggerPhrase>
+            <useGitHubHooks>true</useGitHubHooks>
+            <permitAll>true</permitAll>
+            <whitelist></whitelist>f
+            <autoCloseFailedPullRequests>false</autoCloseFailedPullRequests>
+            <displayBuildErrorsOnDownstreamBuilds>false</displayBuildErrorsOnDownstreamBuilds>
+            <whiteListTargetBranches>
+                <org.jenkinsci.plugins.ghprb.GhprbBranch>
+                    <branch></branch>
+                </org.jenkinsci.plugins.ghprb.GhprbBranch>
+            </whiteListTargetBranches>
+            <blackListTargetBranches>
+                <org.jenkinsci.plugins.ghprb.GhprbBranch>
+                    <branch></branch>
+                </org.jenkinsci.plugins.ghprb.GhprbBranch>
+            </blackListTargetBranches>
+            <gitHubAuthId>github-auth-user-token</gitHubAuthId>
+            <triggerPhrase>start</triggerPhrase>
+            <skipBuildPhrase>.*\[skip\W+ci\].*</skipBuildPhrase>
+            <blackListCommitAuthor></blackListCommitAuthor>
+            <blackListLabels></blackListLabels>
+            <whiteListLabels></whiteListLabels>
+            <includedRegions></includedRegions>
+            <excludedRegions></excludedRegions>
+            <extensions>
+                <org.jenkinsci.plugins.ghprb.extensions.status.GhprbSimpleStatus>
+                    <commitStatusContext>Jenkins</commitStatusContext>
+                    <triggeredStatus></triggeredStatus>
+                    <startedStatus></startedStatus>
+                    <statusUrl></statusUrl>
+                    <addTestResults>false</addTestResults>
+                    <completedStatus>
+                        <org.jenkinsci.plugins.ghprb.extensions.comments.GhprbBuildResultMessage>
+                            <message>Build finished.</message>
+                            <result>SUCCESS</result>
+                        </org.jenkinsci.plugins.ghprb.extensions.comments.GhprbBuildResultMessage>
+                        <org.jenkinsci.plugins.ghprb.extensions.comments.GhprbBuildResultMessage>
+                            <message>Build failed.</message>
+                            <result>FAILURE</result>
+                        </org.jenkinsci.plugins.ghprb.extensions.comments.GhprbBuildResultMessage>
+                        <org.jenkinsci.plugins.ghprb.extensions.comments.GhprbBuildResultMessage>
+                            <message>Error building.</message>
+                            <result>ERROR</result>
+                        </org.jenkinsci.plugins.ghprb.extensions.comments.GhprbBuildResultMessage>
+                    </completedStatus>
+                </org.jenkinsci.plugins.ghprb.extensions.status.GhprbSimpleStatus>
+                <org.jenkinsci.plugins.ghprb.extensions.comments.GhprbCommentFile>
+                    <commentFilePath>${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log</commentFilePath>
+                </org.jenkinsci.plugins.ghprb.extensions.comments.GhprbCommentFile>
+            </extensions>
+        </org.jenkinsci.plugins.ghprb.GhprbTrigger>
+    </triggers>
+    <concurrentBuild>true</concurrentBuild>
+    <builders>
+        <hudson.tasks.Shell>
+            <command>go version</command>
+        </hudson.tasks.Shell>
+        <hudson.tasks.Shell>
+            <command>GO111MODULE=on go test -cover -race ./...</command>
+        </hudson.tasks.Shell>
+        <hudson.tasks.Shell>
+            <command>GO111MODULE=on golangci-lint-run</command>
+        </hudson.tasks.Shell>
+    </builders>
+    <publishers/>
+    <buildWrappers>
+        <org.jenkinsci.plugins.golang.GolangBuildWrapper plugin="golang@1.2">
+            <goVersion>1.11.5</goVersion>
+        </org.jenkinsci.plugins.golang.GolangBuildWrapper>
+    </buildWrappers>
+</project>

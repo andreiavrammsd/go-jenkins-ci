@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+VERSION=${GOLANGCI_LINT_VERSION}
+
+if [[ -z "${VERSION}" ]]; then
+    echo Version is required
+    exit 1
+fi
+
+BIN=${GOLANGCI_LINT_PATH}/golangci-lint
+
+INSTALLED_VERSION=`golangci-lint --version 2> /dev/null`
+
+if [[ "$INSTALLED_VERSION" == *"$VERSION"* ]]; then
+    echo ${INSTALLED_VERSION}
+    exit 0
+fi
+
+curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOLANGCI_LINT_PATH} v${VERSION}
