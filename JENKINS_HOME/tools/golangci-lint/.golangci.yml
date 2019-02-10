@@ -101,7 +101,6 @@ linters-settings:
       - dupbranchbody
       - dupcase
       - dupsubexpr
-      - elseif
       - emptyfallthrough
       - emptystringtest
       - equalfold
@@ -128,12 +127,9 @@ linters-settings:
       - switchtrue
       - typeswitchvar
       - typeunparen
-      - underef
       - unlabelstmt
-      - unlambda
       - unnamedresult
       - unnecessaryblock
-      - unslice
       - valswap
       - weakcond
       - wrapperfunc
@@ -146,7 +142,7 @@ linters-settings:
 
     settings: # settings passed to gocritic
       captLocal: # must be valid enabled check name
-        checkLocals: true
+        paramsOnly: true
       rangeValCopy:
         sizeThreshold: 32
 
