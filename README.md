@@ -91,3 +91,8 @@ See [Makefile](./Makefile) for more options.
 * Configure who has access to Jenkins
   * `Manage Jenkins -> Configure Global Security -> Enable security -> Access Control -> Authorization -> Matrix-based security`
 * Plugin: [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth)
+
+## Development
+
+To fully test on localhost you need a tunnel for GitHub to access your machine.
+You can use tools like [serveo](http://serveo.net/) and [ngrok](https://ngrok.com/). 
