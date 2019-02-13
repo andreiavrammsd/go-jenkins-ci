@@ -52,20 +52,20 @@ See [Makefile](./Makefile) for more options.
 * `Manage Jenkins -> Global Tool Configuration -> Go -> Go installations` (http://jenkinsurl/configureTools/)
   * Add a new version: `Add installer -> Extract *.zip/*.tar.gz` (similar to default installed version)
   * Check versions on [Downloads page](https://golang.org/dl/)
-* Use a Go version for a job (from the job Configure page: http://jenkinsurl/job/\<job name>/configure)
+* Use a Go version for a job (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build Environment -> Set up Go programming language tools -> Go version`
 * Plugin: [Golang](https://plugins.jenkins.io/golang)
 
 #### GolangCI-Lint
 * `Manage Jenkins -> Configure System -> Global properties -> Environment variables -> GOLANGCI_LINT_VERSION -> Value`
 * Check versions on [Releases page](https://github.com/golangci/golangci-lint/releases)
-* Use in a job (from the job Configure page: http://jenkinsurl/job/\<job name>/configure)
+* Use in a job (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build -> Add build step -> Execute shell: GO111MODULE=on golangci-lint-run`
   * Before the tool [runs](JENKINS_HOME/tools/golangci-lint/golangci-lint-run) it [installs](JENKINS_HOME/tools/golangci-lint/golangci-lint-install) the configured version (if not already installed)
   * It uses a [default config](JENKINS_HOME/tools/golangci-lint/.golangci.yml) which can be overwritten by placing a [.golangci.yml](https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml) file in the root of the repository configured in a job
 
 #### Pull request trigger
-* Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/\<job name>/configure)
+* Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build Triggers -> GitHub Pull Request Builder`
 * Global configuration
   * `Manage Jenkins -> GitHub Pull Request Builder -> GitHub Auth`
@@ -80,7 +80,7 @@ See [Makefile](./Makefile) for more options.
 * Plugin: [GitHub Pull Request Builder](https://plugins.jenkins.io/ghprb)
 
 #### Branch push trigger
-* Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/\<job name>/configure)
+* Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build Triggers -> GitHub hook trigger for GITScm polling`
   * `Build Triggers -> Poll SCM`
 * Global configuration
