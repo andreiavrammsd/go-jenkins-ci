@@ -64,6 +64,12 @@ See [Makefile](./Makefile) for more options.
   * Before the tool [runs](JENKINS_HOME/tools/golangci-lint/golangci-lint-run) it [installs](JENKINS_HOME/tools/golangci-lint/golangci-lint-install) the configured version (if not already installed)
   * It uses a [default config](JENKINS_HOME/tools/golangci-lint/.golangci.yml) which can be overwritten by placing a [.golangci.yml](https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml) file in the root of the repository configured in a job
 
+#### go-consistent
+* A tool to check [source code consistency](https://github.com/Quasilyte/go-consistent).
+* Not added by default to job templates, it can be added as an `Execute shell` build step to a job as `go-consistent-run`.
+* If used, it will install the tool automatically and update it on each run (it has no releases for now).
+
+
 #### Pull request trigger
 * Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build Triggers -> GitHub Pull Request Builder`

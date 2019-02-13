@@ -30,8 +30,13 @@ if (!envVars.containsKey("GOLANGCI_LINT_PATH")) {
   save = true
 }
 
+if (!envVars.containsKey("GO_CONSISTENT_PATH")) {
+  envVars.put("GO_CONSISTENT_PATH", "\$JENKINS_HOME/tools/go-consistent")
+  save = true
+}
+
 if (!envVars.containsKey("PATH")) {
-  envVars.put("PATH", "\$PATH:\$GOLANGCI_LINT_PATH")
+  envVars.put("PATH", "\$PATH:\$GOLANGCI_LINT_PATH:\$GO_CONSISTENT_PATH:\$JENKINS_HOME/go/bin")
   save = true
 }
 
