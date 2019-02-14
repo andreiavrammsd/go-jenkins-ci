@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
+set -e
 
 f=go-jenkins-ci.zip
-curl -L https://github.com/andreiavrammsd/go-jenkins-ci/archive/master.zip > ${f}
+curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/master.zip > ${f}
 unzip -o ${f}
 
 cd go-jenkins-ci-master
@@ -19,19 +20,19 @@ for line in ${lines}; do
 
     for c in ${current}; do
         v=$(echo "$c" | cut -d '=' -f1)
-        if [[ ${var} == ${v} ]]; then
+        if [ ${var} = ${v} ]; then
             default=$(echo "$c" | cut -d '=' -f2)
             break
         fi
     done
 
-    if [[ -z "$default" ]]; then
+    if [ -z "$default" ]; then
         default=$(echo "$line" | cut -d '=' -f2)
 
-        if [[ "$var" = "JENKINS_USER" ]]; then
+        if [ "$var" = "JENKINS_USER" ]; then
             default=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
         fi
-        if [[ "$var" = "JENKINS_PASS" ]]; then
+        if [ "$var" = "JENKINS_PASS" ]; then
             default=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
         fi
     fi
