@@ -23,7 +23,11 @@ Includes:
 
 ## Install
 
-Copy [.env.dist](.env.dist) to .env and fill in each variable.
+#### Manually
+
+* Clone/download repository.
+
+* Copy [.env.dist](.env.dist) to .env and fill in each variable.
 
 `JENKINS_USER` The username you are going to log in with
 
@@ -39,12 +43,17 @@ Copy [.env.dist](.env.dist) to .env and fill in each variable.
 
 `GOLANGCI_LINT_VERSION` Default version of GolangCI-Lint
 
-Then run:
+* Then run:
 ```
 make
 ```
 
 See [Makefile](./Makefile) for more options.
+
+#### Automatically
+* [Requirements](./setup/requirements.sh) (for Ubuntu 18.04 - can be configured)
+* [Jenkins](./setup/install.sh)
+
 
 ## Configure
 
