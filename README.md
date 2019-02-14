@@ -35,6 +35,8 @@ Includes:
 
 `JENKINS_URL` The URL which you'll use to access Jenkins
 
+`JENKINS_PORT` The port number Jenkins container will run on
+
 `GITHUB_USERNAME` The username of your GitHub account
 
 `GITHUB_ACCESS_TOKEN` The personal access token generated from your GitHub account
