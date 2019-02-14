@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 U=${USER}
 DOCKER_VERSION=5:18.09.2~3-0~ubuntu-bionic # Find available versions: apt-cache madison docker-ce
