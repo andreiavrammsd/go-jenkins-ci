@@ -8,7 +8,7 @@ if [ ! -d "go-jenkins-ci-master" ]; then
     curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/setup.zip > ${f}
     unzip -o ${f}
 
-    cd go-jenkins-ci-master
+    cd go-jenkins-ci-setup
 fi
 
 echo Configuring...
