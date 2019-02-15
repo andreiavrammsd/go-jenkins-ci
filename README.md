@@ -112,6 +112,17 @@ See [Makefile](./Makefile) for more options.
   * `Manage Jenkins -> Configure Global Security -> Enable security -> Access Control -> Authorization -> Matrix-based security`
 * Plugin: [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth)
 
+## Server
+
+The server you want to run Jenkins on can be automatically configured with basic security options. 
+* A machine with a private SSH key file inside is required
+* A non-root user will be created with SSH access based on the provided key
+* Password authentication will be disabled
+* Root user authentication will be disabled
+* Firewall will be set up with Jenkins and SSH ports open
+
+See [server setup script](./setup/server.sh).
+
 ## Development
 
 To fully test on localhost you need a tunnel for GitHub to access your machine.
