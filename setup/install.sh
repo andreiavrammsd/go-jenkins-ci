@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -d "go-jenkins-ci-setup" ]; then
     echo Downloading...
