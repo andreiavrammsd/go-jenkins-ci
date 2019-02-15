@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-if [ ! -f "./.env.dist" ]; then
+if [ ! -d "go-jenkins-ci-master" ]; then
     echo Downloading...
 
     f=go-jenkins-ci.zip
-    curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/master.zip > ${f}
+    curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/setup.zip > ${f}
     unzip -o ${f}
 
     cd go-jenkins-ci-master
