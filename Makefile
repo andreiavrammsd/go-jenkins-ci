@@ -5,9 +5,9 @@ SHELL=/bin/bash
 include .env
 
 up: confirm
-	@echo $(JENKINS_USER) > /tmp/jenkins-secrets-jenkins-user
-	@echo $(JENKINS_PASS) > /tmp/jenkins-secrets-jenkins-pass
-	@echo $(GITHUB_USERNAME) > /tmp/jenkins-secrets-github-user
+	@echo $(JENKINS_USERNAME) > /tmp/jenkins-secrets-jenkins-username
+	@echo $(JENKINS_PASSWORD) > /tmp/jenkins-secrets-jenkins-password
+	@echo $(GITHUB_USERNAME) > /tmp/jenkins-secrets-github-username
 	@echo $(GITHUB_ACCESS_TOKEN) > /tmp/jenkins-secrets-github-access-token
 
 	docker-compose up -d

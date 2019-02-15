@@ -4,7 +4,7 @@ import com.cloudbees.plugins.credentials.domains.*;
 import org.jenkinsci.plugins.plaincredentials.impl.*
 import hudson.util.Secret
 
-def githubUser = new File("/run/secrets/github-user").text.trim()
+def githubUsername = new File("/run/secrets/github-username").text.trim()
 def githuAccessToken = new File("/run/secrets/github-access-token").text.trim()
 
 // Username and access token
@@ -12,7 +12,7 @@ Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(
     CredentialsScope.GLOBAL,
     "github-user-access-token",
     "GitHub access by username and access token",
-    githubUser,
+    githubUsername,
     githuAccessToken
 )
 

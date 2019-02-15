@@ -4,14 +4,14 @@ import org.acegisecurity.userdetails.UsernameNotFoundException
 
 
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
-def user = new File("/run/secrets/jenkins-user").text.trim()
+def user = new File("/run/secrets/jenkins-username").text.trim()
 
 try {
     hudsonRealm.loadUserByUsername(user)
 } catch (UsernameNotFoundException e) {
     def instance = Jenkins.getInstance()
 
-    def pass = new File("/run/secrets/jenkins-pass").text.trim()
+    def pass = new File("/run/secrets/jenkins-password").text.trim()
 
     hudsonRealm.createAccount(user, pass)
 

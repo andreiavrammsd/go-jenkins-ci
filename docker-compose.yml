@@ -9,9 +9,9 @@ services:
     ports:
       - "${JENKINS_PORT}:8080"
     secrets:
-      - jenkins-user
-      - jenkins-pass
-      - github-user
+      - jenkins-username
+      - jenkins-password
+      - github-username
       - github-access-token
     environment:
       - JENKINS_URL
@@ -22,11 +22,11 @@ volumes:
   jenkins_home:
 
 secrets:
-  jenkins-user:
-    file: /tmp/jenkins-secrets-jenkins-user
-  jenkins-pass:
-    file: /tmp/jenkins-secrets-jenkins-pass
-  github-user:
-    file: /tmp/jenkins-secrets-github-user
+  jenkins-username:
+    file: /tmp/jenkins-secrets-jenkins-username
+  jenkins-password:
+    file: /tmp/jenkins-secrets-jenkins-password
+  github-username:
+    file: /tmp/jenkins-secrets-github-username
   github-access-token:
     file: /tmp/jenkins-secrets-github-access-token

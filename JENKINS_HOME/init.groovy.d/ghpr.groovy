@@ -24,11 +24,11 @@ if (!exists) {
     def String secret = null
     githubAuths.add(new GhprbGitHubAuth(serverAPIUrl, jenkinsUrl, credentialsId, description, id, secret))
 
-    def githubUser = new File("/run/secrets/github-user").text.trim()
+    def githubUsername = new File("/run/secrets/github-username").text.trim()
 
     descriptor.manageWebhooks = true
     descriptor.useComments = true
-    descriptor.adminlist = githubUser
+    descriptor.adminlist = githubUsername
     descriptor.requestForTestingPhrase = ''
     descriptor.cron = ''
 

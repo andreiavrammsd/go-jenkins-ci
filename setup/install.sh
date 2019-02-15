@@ -22,10 +22,10 @@ for line in ${lines}; do
     if [[ -z "$default" ]]; then
         default=$(echo "$line" | cut -d '=' -f2)
 
-        if [[ "$var" = "JENKINS_USER" ]]; then
+        if [[ "$var" = "JENKINS_USERNAME" ]]; then
             default=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
         fi
-        if [[ "$var" = "JENKINS_PASS" ]]; then
+        if [[ "$var" = "JENKINS_PASSWORD" ]]; then
             default=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
         fi
     fi

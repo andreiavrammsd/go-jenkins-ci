@@ -31,9 +31,9 @@ First, clone/download repository.
 
 * Copy [.env.dist](.env.dist) to .env and fill in each variable.
 
-    `JENKINS_USER` The username you are going to log in with
+    `JENKINS_USERNAME` The username you are going to log in with
     
-    `JENKINS_PASS` The password you are going to log in with
+    `JENKINS_PASSWORD` The password you are going to log in with
     
     `JENKINS_URL` The URL which you'll use to access Jenkins
     
