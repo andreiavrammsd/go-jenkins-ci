@@ -53,6 +53,17 @@ make
 See [Makefile](./Makefile) for more options.
 
 #### Automatically
+
+* Requirements
+```
+curl -sL go-jenkins-ci.andreiavram.ro/requirements.sh | sh
+```
+
+* Jenkins
+```
+curl -sL go-jenkins-ci.andreiavram.ro/install.sh | sh
+```
+
 * [Requirements](./setup/requirements.sh) (for Ubuntu 18.04 - can be configured)
 * [Jenkins](./setup/install.sh)
 

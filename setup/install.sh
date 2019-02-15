@@ -1,13 +1,17 @@
 #!/bin/sh
 set -e
 
-f=go-jenkins-ci.zip
-curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/master.zip > ${f}
-unzip -o ${f}
+if [[ ! -f "./.env.dist" ]]; then
+    echo Downloading...
 
-cd go-jenkins-ci-master
+    f=go-jenkins-ci.zip
+    curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/master.zip > ${f}
+    unzip -o ${f}
 
-echo Configure...
+    cd go-jenkins-ci-master
+fi
+
+echo Configuring...
 echo
 
 out=""
@@ -47,5 +51,5 @@ done
 echo -e ${out} > .env
 
 echo
-echo Install...
+echo Installing...
 sudo make
