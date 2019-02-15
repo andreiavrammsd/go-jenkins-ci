@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 U=${USER}
 DOCKER_COMPOSE_VERSION=1.23.2
 
-if [ ${U} != "root" ]; then
+if [[ ${U} != "root" ]]; then
     sudo su -s "$0"
     exit
 fi
@@ -30,7 +30,7 @@ add-apt-repository \
 apt update
 apt install -y docker-ce
 
-if [ ${U} != "root" ]; then
+if [[ ${U} != "root" ]]; then
     usermod -aG docker ${U}
 fi
 
@@ -39,6 +39,6 @@ f=/usr/local/bin/docker-compose
 curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o ${f}
 chmod +x ${f}
 
-if [ ${U} != "root" ]; then
+if [[ ${U} != "root" ]]; then
     exit
 fi
