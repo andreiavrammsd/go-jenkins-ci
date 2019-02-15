@@ -1,14 +1,4 @@
-#!/bin/bash
-
-if [ ! -d "go-jenkins-ci-setup" ]; then
-    echo Downloading...
-
-    f=go-jenkins-ci.zip
-    curl -sL https://github.com/andreiavrammsd/go-jenkins-ci/archive/setup.zip > ${f}
-    unzip -o ${f}
-
-    cd go-jenkins-ci-setup
-fi
+#!/bin/sh
 
 echo Configuring...
 echo

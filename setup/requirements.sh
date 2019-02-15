@@ -11,7 +11,7 @@ fi
 
 apt update
 
-apt install -y make unzip
+apt install -y make
 
 # Docker
 apt remove docker docker-engine docker.io -y
