@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [[ ! -f "./.env.dist" ]]; then
+if [ ! -f "./.env.dist" ]; then
     echo Downloading...
 
     f=go-jenkins-ci.zip
