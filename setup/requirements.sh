@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
 
 U=${USER}
-DOCKER_VERSION=5:18.09.2~3-0~ubuntu-bionic # Find available versions: apt-cache madison docker-ce
 DOCKER_COMPOSE_VERSION=1.23.2
 
 if [[ ${U} != "root" ]]; then
@@ -11,7 +11,7 @@ fi
 
 apt update
 
-apt install -y make unzip
+apt install -y make
 
 # Docker
 apt remove docker docker-engine docker.io -y
@@ -28,7 +28,7 @@ add-apt-repository \
    stable"
 
 apt update
-apt install -y docker-ce=${DOCKER_VERSION} docker-ce-cli=${DOCKER_VERSION}
+apt install -y docker-ce
 
 if [[ ${U} != "root" ]]; then
     usermod -aG docker ${U}

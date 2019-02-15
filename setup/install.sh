@@ -1,12 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-f=go-jenkins-ci.zip
-curl -L https://github.com/andreiavrammsd/go-jenkins-ci/archive/master.zip > ${f}
-unzip -o ${f}
-
-cd go-jenkins-ci-master
-
-echo Configure...
+echo Configuring...
 echo
 
 out=""
@@ -19,7 +13,7 @@ for line in ${lines}; do
 
     for c in ${current}; do
         v=$(echo "$c" | cut -d '=' -f1)
-        if [[ ${var} == ${v} ]]; then
+        if [[ ${var} = ${v} ]]; then
             default=$(echo "$c" | cut -d '=' -f2)
             break
         fi
@@ -46,5 +40,5 @@ done
 echo -e ${out} > .env
 
 echo
-echo Install...
+echo Installing...
 sudo make

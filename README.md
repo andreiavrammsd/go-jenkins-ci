@@ -14,36 +14,38 @@ Includes:
 - Various [plugins](JENKINS_HOME/plugins.txt) for simple or advanced jobs management
 
 ## Requirements
-* make
-* Docker
-* Docker compose
+* Tools (see [install script](./setup/requirements.sh)):
+    * make
+    * Docker
+    * Docker compose
+
 * GitHub [personal access token](https://github.com/settings/tokens) with scopes:
   * repo
   * write:repo_hook
 
 ## Install
 
-#### Manually
+First, clone/download repository.
 
-* Clone/download repository.
+#### Manually
 
 * Copy [.env.dist](.env.dist) to .env and fill in each variable.
 
-`JENKINS_USER` The username you are going to log in with
-
-`JENKINS_PASS` The password you are going to log in with
-
-`JENKINS_URL` The URL which you'll use to access Jenkins
-
-`JENKINS_PORT` The port number Jenkins container will run on
-
-`GITHUB_USERNAME` The username of your GitHub account
-
-`GITHUB_ACCESS_TOKEN` The personal access token generated from your GitHub account
-
-`GO_VERSION` Default version of Go
-
-`GOLANGCI_LINT_VERSION` Default version of GolangCI-Lint
+    `JENKINS_USER` The username you are going to log in with
+    
+    `JENKINS_PASS` The password you are going to log in with
+    
+    `JENKINS_URL` The URL which you'll use to access Jenkins
+    
+    `JENKINS_PORT` The port number Jenkins container will run on
+    
+    `GITHUB_USERNAME` The username of your GitHub account
+    
+    `GITHUB_ACCESS_TOKEN` The personal access token generated from your GitHub account
+    
+    `GO_VERSION` Default version of Go
+    
+    `GOLANGCI_LINT_VERSION` Default version of GolangCI-Lint
 
 * Then run:
 ```
@@ -52,10 +54,11 @@ make
 
 See [Makefile](./Makefile) for more options.
 
-#### Automatically
-* [Requirements](./setup/requirements.sh) (for Ubuntu 18.04 - can be configured)
-* [Jenkins](./setup/install.sh)
+#### Interactive
 
+```
+./setup/install.sh
+```
 
 ## Configure
 
