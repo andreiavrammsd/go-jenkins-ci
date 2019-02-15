@@ -1,13 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 U=${USER}
 DOCKER_COMPOSE_VERSION=1.23.2
 
-if [[ ${U} != "root" ]]; then
-    sudo su -s "$0"
-    exit
-fi
+# Root privileges required
+[[ "$(whoami)" != "root" ]] && exec sudo -- "$0" "$@"
 
 apt update
 

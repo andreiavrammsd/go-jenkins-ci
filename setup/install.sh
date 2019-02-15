@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo Configuring...
 echo
@@ -41,4 +41,5 @@ echo -e ${out} > .env
 
 echo
 echo Installing...
+echo
 sudo make
