@@ -1,7 +1,6 @@
 #!/bin/sh
-set -e
 
-if [ ! -d "go-jenkins-ci-master" ]; then
+if [ ! -d "go-jenkins-ci-setup" ]; then
     echo Downloading...
 
     f=go-jenkins-ci.zip
