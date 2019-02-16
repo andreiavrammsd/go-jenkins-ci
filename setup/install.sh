@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ ! -f "./.env.dist" ]] && echo "Run the script from the project root directory." && exit 1
+
 echo Configuring...
 echo
 

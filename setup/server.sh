@@ -30,6 +30,7 @@ for key in "${KEYS[@]}"; do
     echo ${key}=${VARS[$key]}
 done
 
+echo
 echo -n "Are the above correct? [y/N] " && read ans && [ $${ans:-N} == y ]
 [[ "${ans}" != "y" ]] && exit 0
 
@@ -74,10 +75,13 @@ mkdir -p /home/${NON_ROOT_USER}/.ssh
 mv ${SSH_AUTHORIZED_KEYS} /home/${NON_ROOT_USER}/.ssh/authorized_keys
 chown -R ${NON_ROOT_USER}:${NON_ROOT_USER} /home/${NON_ROOT_USER}/.ssh
 
-# Disable root password auth
-sed -i -e 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-sed -i -e "s/Port 22/Port ${SSH_PORT}/g" /etc/ssh/sshd_config
-sed -i -e 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+# Disable password and root auth
+sshdconfig="/etc/ssh/sshd_config"
+sed -i -re "s/^(\#?)(PasswordAuthentication)([[:space:]]+)yes/\2\3no/" ${sshdconfig}
+sed -i -re "s/^(\#?)(ChallengeResponseAuthentication)([[:space:]]+)yes/\2\3no/" ${sshdconfig}
+sed -i -re "s/^(\#?)(UsePAM)([[:space:]]+)yes/\2\3no/" ${sshdconfig}
+sed -i -re "s/^(\#?)(Port)([[:space:]]+)([0-9]+)/\2\3${SSH_PORT}/" ${sshdconfig}
+sed -i -re "s/^(\#?)(PermitRootLogin)([[:space:]]+)yes/\2\3no/" ${sshdconfig}
 sudo systemctl reload sshd
 
 # Enable firewall
@@ -87,9 +91,10 @@ ufw allow ${JENKINS_PORT}
 ufw allow ${SSH_PORT}
 
 # Cleanup
-apt-get clean
-apt-get autoremove --purge -y
+apt clean
+apt autoremove --purge -y
 
 # Reboot
-echo -n "Reboot is required. Reboot now? [y/N] " && read ans && [ $${ans:-N} == y ]
+echo
+echo -n "Reboot is required. Then login with 'ssh ${NON_ROOT_USER}@host -p ${SSH_PORT}'. Reboot now? [y/N] " && read ans && [ $${ans:-N} == y ]
 [[ "${ans}" = "y" ]] && reboot

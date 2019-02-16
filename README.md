@@ -123,7 +123,7 @@ The server you want to run Jenkins on can be automatically configured with basic
 
 See [server setup script](./setup/server.sh).
 
-## Development
+## Development/Testing
 
 To fully test on localhost you need a tunnel for GitHub to access your machine.
 You can use tools like [serveo](http://serveo.net/) and [ngrok](https://ngrok.com/). 
