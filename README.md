@@ -76,7 +76,7 @@ See [Makefile](./Makefile) for more options.
 * Use in a job (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build -> Add build step -> Execute shell: GO111MODULE=on golangci-lint-run`
   * Before the tool [runs](JENKINS_HOME/tools/golangci-lint/golangci-lint-run) it [installs](JENKINS_HOME/tools/golangci-lint/golangci-lint-install) the configured version (if not already installed)
-  * It uses a [default config](JENKINS_HOME/tools/golangci-lint/.golangci.yml) which can be overwritten by placing a [.golangci.yml](https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml) file in the root of the repository configured in a job
+  * It uses a [default config](JENKINS_HOME/tools/golangci-lint/.golangci.yml) which can be overwritten by placing a [config file](https://github.com/golangci/golangci-lint#config-file) in the root of your repository
 
 #### go-consistent
 * A tool to check [source code consistency](https://github.com/Quasilyte/go-consistent).

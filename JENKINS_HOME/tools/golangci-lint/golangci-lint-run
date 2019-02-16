@@ -2,9 +2,18 @@
 
 golangci-lint-install
 
-if [[ ! -f ".golangci.yml" ]]; then
-    cp ${GOLANGCI_LINT_PATH}/.golangci.yml .
+cfg=$(find . -regex '\./.golangci.\(yml\|toml\|json\)' | head -n 1)
+cfgsrc="${cfg}"
+
+if [[ -z "${cfg}" ]]; then
+    cfg="${GOLANGCI_LINT_PATH}/.golangci.yml"
+    cfgsrc="default"
 fi
 
 go get
-golangci-lint run
+
+echo
+echo Running with config file: ${cfgsrc}
+echo
+
+golangci-lint run -c ${cfg}
