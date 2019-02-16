@@ -49,7 +49,7 @@ First, clone/download repository.
 
 * Then run:
 ```
-make
+sudo make
 ```
 
 See [Makefile](./Makefile) for more options.

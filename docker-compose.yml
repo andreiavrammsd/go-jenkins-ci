@@ -23,10 +23,10 @@ volumes:
 
 secrets:
   jenkins-username:
-    file: /tmp/jenkins-secrets-jenkins-username
+    file: /secrets/jenkins-secrets-jenkins-username
   jenkins-password:
-    file: /tmp/jenkins-secrets-jenkins-password
+    file: /secrets/jenkins-secrets-jenkins-password
   github-username:
-    file: /tmp/jenkins-secrets-github-username
+    file: /secrets/jenkins-secrets-github-username
   github-access-token:
-    file: /tmp/jenkins-secrets-github-access-token
+    file: /secrets/jenkins-secrets-github-access-token
