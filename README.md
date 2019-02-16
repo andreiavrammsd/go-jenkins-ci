@@ -60,6 +60,13 @@ See [Makefile](./Makefile) for more options.
 ./setup/install.sh
 ```
 
+## Add job
+
+* Create a new job with `Copy from` option and search for the [template](JENKINS_HOME/jobs) you need
+* Enable it by unchecking `General -> Disable project`
+* Configure it (see below)
+* Saving it will create the required webhooks
+
 ## Configure
 
 #### Go
