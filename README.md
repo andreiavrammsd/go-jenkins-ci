@@ -63,7 +63,7 @@ See [Makefile](./Makefile) for more options.
 ## Add job
 
 * Create a new job with `Copy from` option and search for the [template](JENKINS_HOME/jobs) you need
-* Enable it by unchecking `General -> Disable project`
+* Enable it by unchecking `General -> Disable this project`
 * Configure it (see below)
 * Saving it will create the required webhooks
 

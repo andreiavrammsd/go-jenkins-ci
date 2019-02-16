@@ -6,6 +6,7 @@
 - Set Source Code Management -> Repository URL
 - If private repository, set Source Code Management -> Credentials
 - Set Build Triggers -> Admin list
+- Enable by unchecking General -> Disable this project
 </description>
     <keepDependencies>false</keepDependencies>
     <properties>

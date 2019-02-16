@@ -4,6 +4,7 @@
   <description>Build on branch push
 - Set Source Code Management -> Repository URL
 - If private repository, set Source Code Management -> Credentials
+- Enable by unchecking General -> Disable this project
   </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
