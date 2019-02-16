@@ -90,7 +90,6 @@ See [Makefile](./Makefile) for more options.
 * Not added by default to job templates, it can be added as an `Execute shell` build step to a job as `go-consistent-run`.
 * If used, it will install the tool automatically and update it on each run (it has no releases for now).
 
-
 #### Pull request trigger
 * Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/jobname/configure)
   * `Build Triggers -> GitHub Pull Request Builder`
@@ -113,6 +112,11 @@ See [Makefile](./Makefile) for more options.
 * Global configuration
   * `Manage Jenkins -> GitHub -> GitHub Servers`
 * Plugin: [GitHub Pull Request Builder](https://plugins.jenkins.io/github)
+
+#### Workspace cleanup
+* Workspace data (repository used in job) is always deleted after job is finished
+* Configure from the job Configure page: `Post-build Actions -> Delete workspace when build is done`
+* Plugin: [Workspace Cleanup](https://plugins.jenkins.io/ws-cleanup)
 
 #### Authorization (http://jenkinsurl/configureSecurity/)
 * Configure who has access to Jenkins

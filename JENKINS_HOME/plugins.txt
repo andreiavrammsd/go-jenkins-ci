@@ -6,3 +6,4 @@ ghprb:1.42.0
 github:1.29.3
 github-branch-source:2.4.2
 workflow-aggregator:2.6
+ws-cleanup:0.37
