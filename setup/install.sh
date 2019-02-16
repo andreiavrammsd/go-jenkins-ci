@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-[[ ! -f "./.env.dist" ]] && echo "Run the script from the project root directory." && exit 1
+root="$(dirname $( cd "$(dirname "$0")" ; pwd -P ))"
+
+cd ${root}
+
+envdist=".env.dist"
+env=".env"
+
+[[ ! -f ${envdist} ]] && echo "File .env.dist is missing." && exit 1
 
 echo Configuring...
 echo
 
 out=""
-lines=`cat ./.env.dist`
-current=`cat ./.env 2> /dev/null`
+lines=`cat ${envdist}`
+current=`cat ${env} 2> /dev/null`
 
 for line in ${lines}; do
     var=$(echo "$line" | cut -d '=' -f1)
@@ -39,7 +46,7 @@ for line in ${lines}; do
     out+="$var=$val\n"
 done
 
-echo -e ${out} > .env
+echo -e ${out} > ${env}
 
 echo
 echo Installing...
