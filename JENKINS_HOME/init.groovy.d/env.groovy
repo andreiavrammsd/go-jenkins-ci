@@ -14,7 +14,6 @@ if (envVarsNodePropertyList == null || envVarsNodePropertyList.size() == 0) {
   envVars = newEnvVarsNodeProperty.getEnvVars()
 } else {
   envVars = envVarsNodePropertyList.get(0).getEnvVars()
-
 }
 
 def env = System.getenv()

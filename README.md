@@ -12,6 +12,7 @@ Includes:
 - Pull request job template
 - Branch push job template
 - Various [plugins](JENKINS_HOME/plugins.txt) for simple or advanced jobs management
+- Automatic backups to local path or remote repository
 
 ## Requirements
 * Tools (see [install script](./setup/requirements.sh)):
@@ -32,19 +33,19 @@ First, clone/download repository.
 * Copy [.env.dist](.env.dist) to .env and fill in each variable.
 
     `JENKINS_USERNAME` The username you are going to log in with
-    
+
     `JENKINS_PASSWORD` The password you are going to log in with
-    
+
     `JENKINS_URL` The URL which you'll use to access Jenkins
-    
+
     `JENKINS_PORT` The port number Jenkins container will run on
-    
+
     `GITHUB_USERNAME` The username of your GitHub account
-    
+
     `GITHUB_ACCESS_TOKEN` The personal access token generated from your GitHub account
-    
+
     `GO_VERSION` Default version of Go
-    
+
     `GOLANGCI_LINT_VERSION` Default version of GolangCI-Lint
 
 * Then run:
@@ -92,6 +93,7 @@ See [Makefile](./Makefile) for more options.
 
 #### Pull request trigger
 * Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/jobname/configure)
+  * `Source Code Management -> Repository URL`
   * `Build Triggers -> GitHub Pull Request Builder`
 * Global configuration
   * `Manage Jenkins -> GitHub Pull Request Builder -> GitHub Auth`
@@ -107,6 +109,8 @@ See [Makefile](./Makefile) for more options.
 
 #### Branch push trigger
 * Configured as a build trigger (from the job Configure page: http://jenkinsurl/job/jobname/configure)
+  * `General -> GitHub project -> Project url (repository url)`
+  * `Source Code Management -> Repository URL`
   * `Build Triggers -> GitHub hook trigger for GITScm polling`
   * `Build Triggers -> Poll SCM`
 * Global configuration
@@ -122,6 +126,20 @@ See [Makefile](./Makefile) for more options.
 * Configure who has access to Jenkins
   * `Manage Jenkins -> Configure Global Security -> Enable security -> Access Control -> Authorization -> Matrix-based security`
 * Plugin: [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth)
+
+#### Backup
+* To local path
+ * `Manage Jenkins -> ThinBackup`
+ * Plugin: [Matrix Authorization Strategy](https://plugins.jenkins.io/matrix-auth)
+* To remote repository
+ * See [`Backup` job](./JENKINS_HOME/jobs/Backup/config.xml)
+    * Requires an existing GitHub repository
+    * Enable job by unchecking `General -> Disable this project`
+    * Set the repository url: `Source Code Management -> Repository URL` 
+    * Set the build schedule: `Build Triggers -> Build periodically -> Schedule` 
+    * Customize the process: `Build -> Execute shell` 
+    * Configure repository push: `Post-build Actions -> Git Publisher`
+    * The process is simple: every day, some important parts of the environment are pushed to the specified repository.
 
 ## Server
 

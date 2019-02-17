@@ -7,11 +7,11 @@
 - If private repository, set Source Code Management -> Credentials
 - Set Build Triggers -> Admin list
 - Enable by unchecking General -> Disable this project
-    </description>
+</description>
     <keepDependencies>false</keepDependencies>
     <properties>
         <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.3">
-            <projectUrl>https://github.com/username/project</projectUrl>
+            <projectUrl></projectUrl>
             <displayName></displayName>
         </com.coravy.hudson.plugins.github.GithubProjectProperty>
     </properties>
@@ -21,7 +21,7 @@
             <hudson.plugins.git.UserRemoteConfig>
                 <name>origin</name>
                 <refspec>+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*</refspec>
-                <url>https://github.com/username/project</url>
+                <url></url>
                 <credentialsId>github-user-access-token</credentialsId>
             </hudson.plugins.git.UserRemoteConfig>
         </userRemoteConfigs>

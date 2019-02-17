@@ -25,4 +25,4 @@ restart: confirm
 	docker-compose restart
 
 confirm:
-	@echo -n "Are you sure? [y/N] " && read ans && [ $${ans:-N} == y ]
+	@echo -en "\nAre you sure? [y/N] " && read ans && [ $${ans:-N} == y ]
