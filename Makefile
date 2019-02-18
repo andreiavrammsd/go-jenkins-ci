@@ -15,7 +15,7 @@ up: confirm
 	@echo $(GITHUB_USERNAME) > /secrets/jenkins-secrets-github-username
 	@echo $(GITHUB_ACCESS_TOKEN) > /secrets/jenkins-secrets-github-access-token
 
-	TZ=$(TZ) docker-compose up -d
+	@TZ=$(TZ) docker-compose up -d
 
 logs:
 	docker-compose logs -f
