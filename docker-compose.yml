@@ -17,6 +17,7 @@ services:
       - JENKINS_URL
       - GO_VERSION
       - GOLANGCI_LINT_VERSION
+      - TZ
 
 volumes:
   jenkins_home:

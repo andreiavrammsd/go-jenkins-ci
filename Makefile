@@ -4,6 +4,10 @@ SHELL=/bin/bash
 
 include .env
 
+ifndef TZ
+  TZ=`date +"%Z"`
+endif
+
 up: confirm
 	@mkdir -p /secrets
 	@echo $(JENKINS_USERNAME) > /secrets/jenkins-secrets-jenkins-username
@@ -11,7 +15,7 @@ up: confirm
 	@echo $(GITHUB_USERNAME) > /secrets/jenkins-secrets-github-username
 	@echo $(GITHUB_ACCESS_TOKEN) > /secrets/jenkins-secrets-github-access-token
 
-	docker-compose up -d
+	TZ=$(TZ) docker-compose up -d
 
 logs:
 	docker-compose logs -f
