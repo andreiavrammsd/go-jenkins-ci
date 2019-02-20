@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:lts
 
 USER root
-RUN apt update && apt install -y make gcc nano rsync
+RUN apt update && apt install -y make gcc rsync
 USER jenkins
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Djenkins.CLI.disabled=true"

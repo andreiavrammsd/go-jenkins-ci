@@ -1,7 +1,5 @@
 # Go Jenkins CI
 
-### Work in progress
-
 Automated setup of continuous integration for Go projects hosted on GitHub with [Jenkins](https://jenkins.io/) and [GolangCI-Lint](https://github.com/golangci/golangci-lint).
 
 - Runs unit tests and code quality tools
