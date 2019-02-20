@@ -58,13 +58,11 @@ fi
 apt update && apt upgrade -y
 
 # Locale and timezone settings
-if [[ -z "${LOCALE}" ]]; then
+if [[ "${LOCALE}" != "${LANG}" ]]; then
     locale-gen ${LOCALE}
 fi
 
-if [[ -z "${TIMEZONE}" ]]; then
-    timedatectl set-timezone ${TIMEZONE}
-fi
+timedatectl set-timezone ${TIMEZONE}
 
 # Create non root user
 useradd -d /home/${NON_ROOT_USER} -m -U -G sudo ${NON_ROOT_USER} -s /bin/bash
